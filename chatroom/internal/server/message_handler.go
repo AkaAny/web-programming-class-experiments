@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/go-netty/go-netty"
 	"github.com/samber/lo"
-	"web-programming-class-experiments/exp3-udp-chatroom/internal"
+	"web-programming-class-experiments/chatroom/internal"
 )
 
 type ServerMessageHandler struct {

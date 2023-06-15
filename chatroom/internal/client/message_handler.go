@@ -3,7 +3,7 @@ package client
 import (
 	"fmt"
 	"github.com/go-netty/go-netty"
-	"web-programming-class-experiments/exp3-udp-chatroom/internal"
+	"web-programming-class-experiments/chatroom/internal"
 )
 
 type ClientMessageHandler struct {
