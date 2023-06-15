@@ -4,11 +4,12 @@ import (
 	"fmt"
 	"github.com/go-netty/go-netty"
 	"github.com/go-netty/go-netty/codec/format"
+	"github.com/go-netty/go-netty/transport"
 	"web-programming-class-experiments/chatroom/internal"
 	"web-programming-class-experiments/chatroom/internal/client"
 )
 
-func ClientMain(transportFactory netty.TransportFactory, address string, fromID string) {
+func ClientMain(transportFactory netty.TransportFactory, address string, fromID string, option ...transport.Option) {
 	setupCodec := func(channel netty.Channel) {
 		internal.WithProtocol(channel.Pipeline(), func(pipeline netty.Pipeline) {
 			pipeline.AddLast(format.JSONCodec(false, false)).
@@ -16,7 +17,7 @@ func ClientMain(transportFactory netty.TransportFactory, address string, fromID 
 		})
 	}
 	ch, err := netty.NewBootstrap(netty.WithClientInitializer(setupCodec),
-		netty.WithTransport(transportFactory)).Connect(address)
+		netty.WithTransport(transportFactory)).Connect(address, option...)
 	if err != nil {
 		panic(err)
 	}
