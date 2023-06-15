@@ -5,6 +5,7 @@ import (
 	"github.com/schollz/progressbar/v3"
 	"math/rand"
 	"net"
+	"time"
 	"web-programming-class-experiments/exp2-tcp-syn-flood/internal/logging"
 
 	"github.com/google/gopacket"
@@ -98,6 +99,7 @@ func StartFlooding(stopChan chan bool, destinationHost string, destinationPort, 
 			if err = bar.Add(payloadLength); err != nil {
 				return errors.Wrap(err, "unable to increase bar length")
 			}
+			time.Sleep(3 * time.Second)
 		}
 	}
 }
